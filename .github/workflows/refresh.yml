@@ -199,6 +199,15 @@ jobs:
           git push -u origin "$branch"
           echo "name=$branch" >> "$GITHUB_OUTPUT"
 
+      - name: Ensure PR labels exist
+        if: steps.detect.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Idempotent: --force overwrites the same label without error.
+          gh label create "automated" --color "ededed" --description "Opened by a workflow" --force
+          gh label create "data-refresh" --color "0e8a16" --description "Weekly dataset refresh" --force
+
       - name: Open pull request
         if: steps.detect.outputs.has_changes == 'true'
         env:
