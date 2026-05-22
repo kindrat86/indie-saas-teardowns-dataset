@@ -4,7 +4,6 @@
   "slug": "indie-saas-teardowns",
   "version": "1.0.0",
   "description": "An open editorial dataset of indie SaaS marketing analysis: funnel teardowns, pricing teardowns, head-to-head comparisons, named-competitor alternative pages, and canonical category buckets. Every row is independently verifiable against the matching page on unlocksaas.com and carries a dated lastVerified field.",
-  "generatedAt": "2026-05-22T18:56:12.575Z",
   "lastVerified": "2026-05-18",
   "nextReview": "2026-08-16",
   "doi": "10.5281/zenodo.20315741",
