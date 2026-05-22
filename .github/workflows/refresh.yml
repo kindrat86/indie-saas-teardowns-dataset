@@ -1,0 +1,251 @@
+name: Weekly dataset refresh
+
+# Fetches the canonical dataset from https://unlocksaas.com/dataset every
+# Monday at 06:00 UTC. If any of the seven canonical files have changed
+# byte-for-byte, opens a pull request against `main` with a row-count
+# delta summary in the body and a new entry prepended to CHANGELOG.md.
+#
+# Silent weeks are normal: when nothing changed on the canonical site,
+# the workflow exits without opening a PR.
+#
+# Source of truth: https://unlocksaas.com/dataset
+# Canonical generator: app/src/lib/seo/dataset.ts in kindrat86/unlocksaas
+
+on:
+  schedule:
+    # Monday 06:00 UTC. Picked so the deploy from any weekend pSEO row
+    # additions has settled and the cached responses on Vercel are fresh.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Why are you triggering a manual refresh?"
+        required: false
+        default: "manual"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: weekly-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Fetch canonical, diff, open PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Capture previous row counts
+        id: prev_counts
+        run: |
+          if [ -f data/indie-saas-teardowns.json ]; then
+            prev=$(jq -c '.counts // {}' data/indie-saas-teardowns.json)
+          else
+            prev="{}"
+          fi
+          echo "value=$prev" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch canonical bundle from production
+        run: |
+          set -euo pipefail
+          mkdir -p data/tables
+          BASE="https://unlocksaas.com/dataset"
+          # Curl with retry, fail on HTTP errors, follow redirects.
+          curl --fail --location --retry 3 --retry-delay 5 \
+            --silent --show-error \
+            "$BASE/indie-saas-teardowns.json" -o data/indie-saas-teardowns.json
+          curl --fail --location --retry 3 --retry-delay 5 \
+            --silent --show-error \
+            "$BASE/indie-saas-teardowns.csv" -o data/indie-saas-teardowns.csv
+          for t in funnel-teardowns pricing-teardowns comparisons alternatives categories; do
+            curl --fail --location --retry 3 --retry-delay 5 \
+              --silent --show-error \
+              "$BASE/tables/$t.csv" -o "data/tables/$t.csv"
+          done
+
+      - name: Validate JSON bundle is well-formed
+        run: |
+          jq -e 'has("name") and has("version") and has("counts") and has("tables")' \
+            data/indie-saas-teardowns.json > /dev/null
+          echo "Bundle structure OK"
+          jq '.counts' data/indie-saas-teardowns.json
+
+      - name: Drop the per-fetch generatedAt timestamp
+        # The JSON bundle's `generatedAt` field is the current ISO time at
+        # production build. Every fetch is therefore "different" by that one
+        # field. Normalize it so the byte-diff below only flips when the
+        # actual editorial content changed.
+        run: |
+          jq 'del(.generatedAt)' data/indie-saas-teardowns.json > data/.normalized.json
+          mv data/.normalized.json data/indie-saas-teardowns.json
+
+      - name: Detect substantive changes
+        id: detect
+        run: |
+          if git diff --quiet -- data/; then
+            echo "Nothing changed in data/. Exiting cleanly."
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Changes detected:"
+            git diff --stat -- data/
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Compute row-count delta summary
+        id: delta
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          PREV='${{ steps.prev_counts.outputs.value }}'
+          NEW=$(jq -c '.counts // {}' data/indie-saas-teardowns.json)
+          # Pretty-print a markdown table of before / after / delta per table.
+          delta_md=$(
+            jq -n --argjson prev "$PREV" --argjson new "$NEW" '
+              ["funnel_teardowns","pricing_teardowns","comparisons","alternatives","categories","total_rows"]
+              | map({
+                  table: .,
+                  prev: ($prev[.] // 0),
+                  new:  ($new[.]  // 0)
+                })
+              | map(. + { delta: (.new - .prev) })
+              | (["| Table | Before | After | Δ |", "|---|---:|---:|---:|"]
+                  + map("| \(.table) | \(.prev) | \(.new) | \(if .delta > 0 then "+\(.delta)" else "\(.delta)" end) |"))
+              | join("\n")
+            '
+          )
+          # Save for the PR body and the changelog entry.
+          {
+            echo "table<<DELTA_EOF"
+            echo "$delta_md"
+            echo "DELTA_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          version=$(jq -r '.version' data/indie-saas-teardowns.json)
+          last_verified=$(jq -r '.lastVerified' data/indie-saas-teardowns.json)
+          total=$(jq -r '.counts.total_rows' data/indie-saas-teardowns.json)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "last_verified=$last_verified" >> "$GITHUB_OUTPUT"
+          echo "total=$total" >> "$GITHUB_OUTPUT"
+
+      - name: Prepend CHANGELOG entry
+        if: steps.detect.outputs.has_changes == 'true'
+        env:
+          DELTA: ${{ steps.delta.outputs.table }}
+          VERSION: ${{ steps.delta.outputs.version }}
+          LAST_VERIFIED: ${{ steps.delta.outputs.last_verified }}
+          TOTAL: ${{ steps.delta.outputs.total }}
+        run: |
+          today=$(date -u +%Y-%m-%d)
+          # Build the new entry into a tempfile.
+          {
+            echo "## ${VERSION} – ${today} (weekly refresh)"
+            echo ""
+            echo "Canonical lastVerified: \`${LAST_VERIFIED}\` · Total rows: **${TOTAL}**"
+            echo ""
+            echo "$DELTA"
+            echo ""
+            echo "Pulled from https://unlocksaas.com/dataset by the weekly mirror workflow."
+            echo ""
+            echo "---"
+            echo ""
+          } > .new-entry.md
+          # Insert after the leading header block (first `---` separator).
+          awk '
+            BEGIN { inserted = 0; sep_count = 0 }
+            /^---$/ {
+              print
+              sep_count++
+              if (sep_count == 1 && inserted == 0) {
+                print ""
+                while ((getline line < ".new-entry.md") > 0) print line
+                close(".new-entry.md")
+                inserted = 1
+              }
+              next
+            }
+            { print }
+          ' CHANGELOG.md > CHANGELOG.md.new
+          mv CHANGELOG.md.new CHANGELOG.md
+          rm -f .new-entry.md
+
+      - name: Configure git
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          git config user.name "unlocksaas-bot"
+          git config user.email "noreply@unlocksaas.com"
+
+      - name: Commit and push refresh branch
+        id: branch
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          today=$(date -u +%Y-%m-%d)
+          branch="refresh/${today}"
+          # If a stale branch from a previous run exists on the remote,
+          # blow it away — we always want today's run to be authoritative.
+          git push origin --delete "$branch" 2>/dev/null || true
+          git checkout -b "$branch"
+          git add data/ CHANGELOG.md
+          git commit -m "data: weekly refresh ${today}
+
+          Pulled from https://unlocksaas.com/dataset.
+          Total rows: ${{ steps.delta.outputs.total }}
+          Canonical version: ${{ steps.delta.outputs.version }}
+          Canonical lastVerified: ${{ steps.delta.outputs.last_verified }}"
+          git push -u origin "$branch"
+          echo "name=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Open pull request
+        if: steps.detect.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ steps.branch.outputs.name }}
+          DELTA: ${{ steps.delta.outputs.table }}
+          VERSION: ${{ steps.delta.outputs.version }}
+          LAST_VERIFIED: ${{ steps.delta.outputs.last_verified }}
+          TOTAL: ${{ steps.delta.outputs.total }}
+        run: |
+          today=$(date -u +%Y-%m-%d)
+          body=$(cat <<EOF
+          ## Weekly dataset refresh — ${today}
+
+          Pulled from the canonical source at https://unlocksaas.com/dataset.
+
+          - **Version**: \`${VERSION}\`
+          - **Canonical lastVerified**: \`${LAST_VERIFIED}\`
+          - **Total rows**: **${TOTAL}**
+
+          ### Row-count delta
+
+          ${DELTA}
+
+          ---
+
+          This PR is opened by the weekly mirror workflow. The workflow only opens a PR when the canonical files have actually changed byte-for-byte (after normalizing the per-fetch \`generatedAt\` timestamp). Silent weeks are normal.
+
+          Closing this PR skips the week; merging it lands the refresh.
+
+          ---
+
+          🤖 Automated by \`.github/workflows/refresh.yml\`
+          EOF
+          )
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Weekly refresh ${today} (v${VERSION}, ${TOTAL} rows)" \
+            --body "$body" \
+            --label "automated" \
+            --label "data-refresh"
+
+      - name: Summary
+        run: |
+          if [ "${{ steps.detect.outputs.has_changes }}" = "true" ]; then
+            echo "✅ Refresh PR opened against main."
+          else
+            echo "✅ No content changes since last refresh. Nothing to do."
+          fi
