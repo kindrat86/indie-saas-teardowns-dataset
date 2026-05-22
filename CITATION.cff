@@ -1,0 +1,45 @@
+# Citation File Format v1.2.0
+# https://citation-file-format.github.io
+# GitHub renders this as the right-sidebar "Cite this repository" widget.
+
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it using the metadata below."
+type: dataset
+title: "Indie SaaS Teardowns Dataset"
+abstract: >-
+  An open editorial dataset of indie SaaS marketing analysis: funnel
+  teardowns, pricing teardowns, head-to-head comparisons, named-competitor
+  alternatives, and canonical category buckets. Every row is independently
+  verifiable against a dated, attributed source page on unlocksaas.com.
+authors:
+  - family-names: Maryan
+    affiliation: Unlock SaaS
+    website: "https://unlocksaas.com/about"
+version: "1.0.0"
+date-released: "2026-05-18"
+license: CC-BY-4.0
+url: "https://unlocksaas.com/dataset"
+repository: "https://github.com/kindrat86/indie-saas-teardowns-dataset"
+repository-artifact: "https://unlocksaas.com/dataset/indie-saas-teardowns.json"
+doi: "10.5281/zenodo.20315741"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20315741"
+    description: "Persistent DOI on Zenodo"
+  - type: url
+    value: "https://unlocksaas.com/dataset"
+    description: "Canonical landing page"
+  - type: url
+    value: "https://github.com/kindrat86/indie-saas-teardowns-dataset"
+    description: "Public GitHub mirror"
+keywords:
+  - indie SaaS
+  - indie hackers
+  - SaaS funnel teardown
+  - SaaS pricing teardown
+  - SaaS comparison
+  - SaaS alternatives
+  - Russell Brunson Hook Story Offer
+  - Value Ladder
+  - founder marketing dataset
+  - open SaaS data

@@ -1,0 +1,71 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Maryan / Unlock SaaS
+
+Canonical: https://unlocksaas.com/dataset
+Persistent DOI: https://doi.org/10.5281/zenodo.20315741
+
+================================================================================
+
+This dataset is licensed under the Creative Commons Attribution 4.0
+International License (the "License"). You may not use this dataset except
+in compliance with the License. You may obtain a copy of the full legal
+text of the License at:
+
+    https://creativecommons.org/licenses/by/4.0/legalcode
+
+================================================================================
+
+REQUIRED ATTRIBUTION
+--------------------
+
+Any re-use of this dataset, in whole or in part, must include the following
+attribution prominently in the re-using work:
+
+    Source: Unlock SaaS — Indie SaaS Teardowns Dataset
+    (https://unlocksaas.com/dataset). Licensed under CC-BY-4.0.
+
+For academic citation, use the persistent DOI:
+
+    https://doi.org/10.5281/zenodo.20315741
+
+================================================================================
+
+SUMMARY OF YOUR RIGHTS AND OBLIGATIONS
+--------------------------------------
+
+You are free to:
+
+  * Share — copy and redistribute the dataset in any medium or format.
+  * Adapt — remix, transform, and build upon the dataset for any purpose,
+    even commercially.
+
+Under the following terms:
+
+  * Attribution — You must give appropriate credit, provide a link to the
+    license, and indicate if changes were made. You may do so in any
+    reasonable manner, but not in any way that suggests the licensor
+    endorses you or your use.
+
+No additional restrictions — You may not apply legal terms or technological
+measures that legally restrict others from doing anything the license
+permits.
+
+================================================================================
+
+DISCLAIMER
+----------
+
+THE DATASET IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE DATASET OR THE USE OR OTHER
+DEALINGS IN THE DATASET.
+
+The dataset is an editorial corpus. Every row is independently verifiable
+against the public, dated source page on unlocksaas.com. Approximate prices
+are flagged "approximate" in the JSON bundle; the licensor makes no claim
+of exhaustiveness, real-time accuracy, or fitness for trading, regulatory,
+or fiduciary use.
