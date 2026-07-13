@@ -6,8 +6,6 @@
   "description": "An open editorial dataset of indie SaaS marketing analysis: funnel teardowns, pricing teardowns, head-to-head comparisons, named-competitor alternative pages, and canonical category buckets. Every row is independently verifiable against the matching page on unlocksaas.com and carries a dated lastVerified field.",
   "lastVerified": "2026-05-18",
   "nextReview": "2026-08-16",
-  "doi": "10.5281/zenodo.20315741",
-  "doiUrl": "https://doi.org/10.5281/zenodo.20315741",
   "license": {
     "spdx": "CC-BY-4.0",
     "url": "https://creativecommons.org/licenses/by/4.0/",
@@ -23,14 +21,13 @@
     "url": "https://unlocksaas.com/about",
     "jobTitle": "Founder"
   },
-  "citation": "Maryan (2026-05-18). Indie SaaS Teardowns Dataset, v1.0.0. Unlock SaaS. https://unlocksaas.com/dataset. CC-BY-4.0. DOI: https://doi.org/10.5281/zenodo.20315741.",
-  "bibtex": "@misc{unlocksaas_indie_saas_teardowns_1_0_0,\n  author       = {Maryan},\n  title        = {{Indie SaaS Teardowns Dataset}},\n  howpublished = {\\url{https://unlocksaas.com/dataset}},\n  year         = {2026},\n  doi          = {10.5281/zenodo.20315741},\n  note         = {Version 1.0.0. Licensed under CC-BY-4.0.}\n}",
+  "citation": "Maryan (2026-05-18). Indie SaaS Teardowns Dataset, v1.0.0. Unlock SaaS. https://unlocksaas.com/dataset. CC-BY-4.0.",
+  "bibtex": "@misc{unlocksaas_indie_saas_teardowns_1_0_0,\n  author       = {Maryan},\n  title        = {{Indie SaaS Teardowns Dataset}},\n  howpublished = {\\url{https://unlocksaas.com/dataset}},\n  year         = {2026},\n  note         = {Version 1.0.0. Licensed under CC-BY-4.0.}\n}",
   "urls": {
     "landing": "https://unlocksaas.com/dataset",
     "json": "https://unlocksaas.com/dataset/indie-saas-teardowns.json",
     "csv": "https://unlocksaas.com/dataset/indie-saas-teardowns.csv",
-    "markdown": "https://unlocksaas.com/dataset.md",
-    "doi": "https://doi.org/10.5281/zenodo.20315741"
+    "markdown": "https://unlocksaas.com/dataset.md"
   },
   "keywords": [
     "indie SaaS",
