@@ -4,8 +4,8 @@
   "slug": "indie-saas-teardowns",
   "version": "1.0.0",
   "description": "An open editorial dataset of indie SaaS marketing analysis: funnel teardowns, pricing teardowns, head-to-head comparisons, named-competitor alternative pages, and canonical category buckets. Every row is independently verifiable against the matching page on unlocksaas.com and carries a dated lastVerified field.",
-  "lastVerified": "2026-05-18",
-  "nextReview": "2026-08-16",
+  "lastVerified": "2026-07-18",
+  "nextReview": "2026-10-16",
   "doi": "10.5281/zenodo.20315741",
   "doiUrl": "https://doi.org/10.5281/zenodo.20315741",
   "license": {
@@ -23,7 +23,7 @@
     "url": "https://unlocksaas.com/about",
     "jobTitle": "Founder"
   },
-  "citation": "Maryan (2026-05-18). Indie SaaS Teardowns Dataset, v1.0.0. Unlock SaaS. https://unlocksaas.com/dataset. CC-BY-4.0. DOI: https://doi.org/10.5281/zenodo.20315741.",
+  "citation": "Maryan (2026-07-18). Indie SaaS Teardowns Dataset, v1.0.0. Unlock SaaS. https://unlocksaas.com/dataset. CC-BY-4.0. DOI: https://doi.org/10.5281/zenodo.20315741.",
   "bibtex": "@misc{unlocksaas_indie_saas_teardowns_1_0_0,\n  author       = {Maryan},\n  title        = {{Indie SaaS Teardowns Dataset}},\n  howpublished = {\\url{https://unlocksaas.com/dataset}},\n  year         = {2026},\n  doi          = {10.5281/zenodo.20315741},\n  note         = {Version 1.0.0. Licensed under CC-BY-4.0.}\n}",
   "urls": {
     "landing": "https://unlocksaas.com/dataset",
@@ -3799,36 +3799,30 @@
           "model": "Freemium with brand-removal upgrade trigger",
           "tiers": [
             {
-              "name": "Free (Starter)",
-              "pricePoint": "$0",
-              "includes": "Text and video testimonial collection, basic Wall of Love widget, Senja branding visible, limited integrations.",
+              "name": "Free",
+              "pricePoint": "$0 (verified 2026-07-17)",
+              "includes": "Collect up to 15 video and text testimonials, unlimited testimonial widgets, unlimited Walls of Love, Senja branding visible.",
               "audience": "Indie founders collecting first testimonials before publishing."
             },
             {
-              "name": "Starter (paid)",
-              "pricePoint": "approximately $19/mo (verified 2026-05-17)",
-              "includes": "Brand removal, custom forms, custom Wall of Love, video uploads, more integrations.",
+              "name": "Starter",
+              "pricePoint": "$29/mo (verified 2026-07-17)",
+              "includes": "Unlimited testimonials, your own branding (Senja attribution removed), Spin the Wheel incentives.",
               "audience": "Indie SaaS ready to publish testimonials on the marketing site."
             },
             {
-              "name": "Premium",
-              "pricePoint": "approximately $59/mo (verified 2026-05-17)",
-              "includes": "Team workspace, advanced customization, video editing, embed analytics, API access.",
+              "name": "Pro",
+              "pricePoint": "$59/mo (verified 2026-07-17)",
+              "includes": "Unlimited testimonials, unlimited forms, team access with 5 seats included; extra seats and projects for a fee.",
               "audience": "Agencies and SaaS with multiple team members managing testimonials."
-            },
-            {
-              "name": "Enterprise",
-              "pricePoint": "Custom (sales contact)",
-              "includes": "Custom contracts, SSO, dedicated support, larger limits.",
-              "audience": "Larger organizations or agencies serving many clients."
             }
           ],
-          "paymentFrequency": "Monthly or annual with annual discount",
-          "freeTrialBehavior": "Free tier IS the trial; paid features can be sampled via a brief trial on signup."
+          "paymentFrequency": "Monthly or annual; yearly billing advertised at 17% off (verified 2026-07-17)",
+          "freeTrialBehavior": "Free tier IS the trial."
         },
         "anchorAnalysis": {
           "pattern": "Brand-removal-trigger anchor",
-          "analysis": "Senja's pricing-page center of gravity is the brand-removal trigger between Free and Starter. The Premium tier at approximately $59/mo anchors above, making Starter at approximately $19/mo read as the natural choice for the indie buyer. The structural upgrade trigger (publishing to marketing site without Senja branding) does most of the work; the anchor mechanics support it but are not the primary driver."
+          "analysis": "Senja's pricing-page center of gravity is the brand-removal trigger between Free and Starter. The Pro tier at $59/mo anchors above, making Starter at $29/mo read as the natural choice for the indie buyer. The structural upgrade trigger (publishing to marketing site without Senja branding) does most of the work; the anchor mechanics support it but are not the primary driver."
         },
         "upgradeTrigger": {
           "pattern": "Brand removal at marketing-surface publication",
@@ -3837,9 +3831,9 @@
         "whatsWorking": [
           "Brand-removal trigger aligns the upgrade moment with structural willingness-to-pay spike.",
           "Free tier with branding feeds the visible-customer flywheel — every Senja widget on someone else's marketing site is an ad.",
-          "Premium tier anchors the price ladder while Starter captures the indie-founder mainstream.",
+          "Pro tier anchors the price ladder while Starter captures the indie-founder mainstream.",
           "Universal-pain category (testimonials) removes the awareness-stage funnel work; buyers arrive already qualified.",
-          "Video-first positioning lands the high-conversion testimonial format as a differentiator on Starter and above."
+          "Video-first positioning lands the high-conversion testimonial format from the free tier up — the first 15 collected testimonials can already be video."
         ],
         "whatToAdapt": [
           "Identify the specific behavioral moment where buyer willingness-to-pay spikes, and price the trigger.",
@@ -3853,9 +3847,9 @@
         ],
         "brunsonLens": {
           "stack": "Modest stack — free tier is functional, paid tiers extend without dramatically restructuring value.",
-          "valueLadder": "Four-rung ladder (Free → Starter → Premium → Enterprise) with brand removal as the structural front-end trigger.",
-          "decoyOrAnchor": "Premium tier as anchor; Starter as the indie-friendly mainstream; Free as flywheel seed.",
-          "paymentMechanics": "Monthly or annual subscription; no usage metering or per-seat scaling below Premium tier."
+          "valueLadder": "Three-rung ladder (Free → Starter → Pro) with brand removal as the structural front-end trigger.",
+          "decoyOrAnchor": "Pro tier as anchor; Starter as the indie-friendly mainstream; Free as flywheel seed.",
+          "paymentMechanics": "Monthly or annual subscription (yearly at 17% off); seat scaling starts at the Pro tier, which includes 5 seats."
         },
         "faqs": [
           {
@@ -3867,8 +3861,12 @@
             "a": "Only when your output is published on a customer's public marketing surface. Form tools, testimonial tools, video tools, link-in-bio tools all work. Internal SaaS, dashboards, admin tools do not — the attribution is invisible to anyone but the buyer."
           },
           {
-            "q": "Why is the Premium tier so much more expensive than Starter?",
-            "a": "Premium serves a different buyer (agency or team) with team-collaboration features. Pricing it well above Starter is intentional anchoring — it makes Starter read as the indie choice and Premium as the professional choice. The price gap reinforces the segment difference."
+            "q": "What is Senja's official pricing?",
+            "a": "As of 2026-07-17, Senja's official pricing page lists three tiers: Free at $0 with up to 15 testimonials, Starter at $29 per month, and Pro at $59 per month, with yearly billing advertised at 17% off. Always confirm on senja.io/pricing — this teardown analyzes the structure, and prices can change."
+          },
+          {
+            "q": "Why is the Pro tier so much more expensive than Starter?",
+            "a": "Pro serves a different buyer (agency or team) with team-collaboration features and 5 included seats. Pricing it well above Starter is intentional anchoring — it makes Starter read as the indie choice and Pro as the professional choice. The price gap reinforces the segment difference."
           },
           {
             "q": "What is the Brunson lens on Senja's pricing?",
@@ -3883,7 +3881,7 @@
         ],
         "homepageUrl": "https://senja.io/",
         "pricingPageUrl": "https://senja.io/pricing",
-        "lastVerified": "2026-05-17"
+        "lastVerified": "2026-07-17"
       },
       {
         "slug": "polar",
