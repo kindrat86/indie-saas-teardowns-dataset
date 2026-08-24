@@ -9,6 +9,17 @@ Versioning is SemVer. See [README.md § Versioning](./README.md#versioning).
 
 ---
 
+## 1.0.0 – 2026-08-24 (weekly refresh)
+
+Canonical lastVerified: `2026-07-18` · Total rows: **170**
+
+"| Table | Before | After | Δ |\n|---|---:|---:|---:|\n| funnel_teardowns | 33 | 33 | 0 |\n| pricing_teardowns | 31 | 31 | 0 |\n| comparisons | 61 | 61 | 0 |\n| alternatives | 21 | 32 | +11 |\n| categories | 13 | 13 | 0 |\n| total_rows | 159 | 170 | +11 |"
+
+Pulled from https://unlocksaas.com/dataset by the weekly mirror workflow.
+
+---
+
+
 ## 1.0.0 – 2026-05-18 (initial public mirror)
 
 ### Added
