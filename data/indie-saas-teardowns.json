@@ -4,8 +4,8 @@
   "slug": "indie-saas-teardowns",
   "version": "1.0.0",
   "description": "An open editorial dataset of indie SaaS marketing analysis: funnel teardowns, pricing teardowns, head-to-head comparisons, named-competitor alternative pages, and canonical category buckets. Every row is independently verifiable against the matching page on unlocksaas.com and carries a dated lastVerified field.",
-  "lastVerified": "2026-05-18",
-  "nextReview": "2026-08-16",
+  "lastVerified": "2026-07-18",
+  "nextReview": "2026-10-16",
   "doi": "10.5281/zenodo.20315741",
   "doiUrl": "https://doi.org/10.5281/zenodo.20315741",
   "license": {
@@ -23,7 +23,7 @@
     "url": "https://unlocksaas.com/about",
     "jobTitle": "Founder"
   },
-  "citation": "Maryan (2026-05-18). Indie SaaS Teardowns Dataset, v1.0.0. Unlock SaaS. https://unlocksaas.com/dataset. CC-BY-4.0. DOI: https://doi.org/10.5281/zenodo.20315741.",
+  "citation": "Maryan (2026-07-18). Indie SaaS Teardowns Dataset, v1.0.0. Unlock SaaS. https://unlocksaas.com/dataset. CC-BY-4.0. DOI: https://doi.org/10.5281/zenodo.20315741.",
   "bibtex": "@misc{unlocksaas_indie_saas_teardowns_1_0_0,\n  author       = {Maryan},\n  title        = {{Indie SaaS Teardowns Dataset}},\n  howpublished = {\\url{https://unlocksaas.com/dataset}},\n  year         = {2026},\n  doi          = {10.5281/zenodo.20315741},\n  note         = {Version 1.0.0. Licensed under CC-BY-4.0.}\n}",
   "urls": {
     "landing": "https://unlocksaas.com/dataset",
@@ -48,9 +48,9 @@
     "funnel_teardowns": 33,
     "pricing_teardowns": 31,
     "comparisons": 61,
-    "alternatives": 21,
+    "alternatives": 32,
     "categories": 13,
-    "total_rows": 159
+    "total_rows": 170
   },
   "tables": {
     "funnel_teardowns": [
@@ -3799,36 +3799,30 @@
           "model": "Freemium with brand-removal upgrade trigger",
           "tiers": [
             {
-              "name": "Free (Starter)",
-              "pricePoint": "$0",
-              "includes": "Text and video testimonial collection, basic Wall of Love widget, Senja branding visible, limited integrations.",
+              "name": "Free",
+              "pricePoint": "$0 (verified 2026-07-17)",
+              "includes": "Collect up to 15 video and text testimonials, unlimited testimonial widgets, unlimited Walls of Love, Senja branding visible.",
               "audience": "Indie founders collecting first testimonials before publishing."
             },
             {
-              "name": "Starter (paid)",
-              "pricePoint": "approximately $19/mo (verified 2026-05-17)",
-              "includes": "Brand removal, custom forms, custom Wall of Love, video uploads, more integrations.",
+              "name": "Starter",
+              "pricePoint": "$29/mo (verified 2026-07-17)",
+              "includes": "Unlimited testimonials, your own branding (Senja attribution removed), Spin the Wheel incentives.",
               "audience": "Indie SaaS ready to publish testimonials on the marketing site."
             },
             {
-              "name": "Premium",
-              "pricePoint": "approximately $59/mo (verified 2026-05-17)",
-              "includes": "Team workspace, advanced customization, video editing, embed analytics, API access.",
+              "name": "Pro",
+              "pricePoint": "$59/mo (verified 2026-07-17)",
+              "includes": "Unlimited testimonials, unlimited forms, team access with 5 seats included; extra seats and projects for a fee.",
               "audience": "Agencies and SaaS with multiple team members managing testimonials."
-            },
-            {
-              "name": "Enterprise",
-              "pricePoint": "Custom (sales contact)",
-              "includes": "Custom contracts, SSO, dedicated support, larger limits.",
-              "audience": "Larger organizations or agencies serving many clients."
             }
           ],
-          "paymentFrequency": "Monthly or annual with annual discount",
-          "freeTrialBehavior": "Free tier IS the trial; paid features can be sampled via a brief trial on signup."
+          "paymentFrequency": "Monthly or annual; yearly billing advertised at 17% off (verified 2026-07-17)",
+          "freeTrialBehavior": "Free tier IS the trial."
         },
         "anchorAnalysis": {
           "pattern": "Brand-removal-trigger anchor",
-          "analysis": "Senja's pricing-page center of gravity is the brand-removal trigger between Free and Starter. The Premium tier at approximately $59/mo anchors above, making Starter at approximately $19/mo read as the natural choice for the indie buyer. The structural upgrade trigger (publishing to marketing site without Senja branding) does most of the work; the anchor mechanics support it but are not the primary driver."
+          "analysis": "Senja's pricing-page center of gravity is the brand-removal trigger between Free and Starter. The Pro tier at $59/mo anchors above, making Starter at $29/mo read as the natural choice for the indie buyer. The structural upgrade trigger (publishing to marketing site without Senja branding) does most of the work; the anchor mechanics support it but are not the primary driver."
         },
         "upgradeTrigger": {
           "pattern": "Brand removal at marketing-surface publication",
@@ -3837,9 +3831,9 @@
         "whatsWorking": [
           "Brand-removal trigger aligns the upgrade moment with structural willingness-to-pay spike.",
           "Free tier with branding feeds the visible-customer flywheel — every Senja widget on someone else's marketing site is an ad.",
-          "Premium tier anchors the price ladder while Starter captures the indie-founder mainstream.",
+          "Pro tier anchors the price ladder while Starter captures the indie-founder mainstream.",
           "Universal-pain category (testimonials) removes the awareness-stage funnel work; buyers arrive already qualified.",
-          "Video-first positioning lands the high-conversion testimonial format as a differentiator on Starter and above."
+          "Video-first positioning lands the high-conversion testimonial format from the free tier up — the first 15 collected testimonials can already be video."
         ],
         "whatToAdapt": [
           "Identify the specific behavioral moment where buyer willingness-to-pay spikes, and price the trigger.",
@@ -3853,9 +3847,9 @@
         ],
         "brunsonLens": {
           "stack": "Modest stack — free tier is functional, paid tiers extend without dramatically restructuring value.",
-          "valueLadder": "Four-rung ladder (Free → Starter → Premium → Enterprise) with brand removal as the structural front-end trigger.",
-          "decoyOrAnchor": "Premium tier as anchor; Starter as the indie-friendly mainstream; Free as flywheel seed.",
-          "paymentMechanics": "Monthly or annual subscription; no usage metering or per-seat scaling below Premium tier."
+          "valueLadder": "Three-rung ladder (Free → Starter → Pro) with brand removal as the structural front-end trigger.",
+          "decoyOrAnchor": "Pro tier as anchor; Starter as the indie-friendly mainstream; Free as flywheel seed.",
+          "paymentMechanics": "Monthly or annual subscription (yearly at 17% off); seat scaling starts at the Pro tier, which includes 5 seats."
         },
         "faqs": [
           {
@@ -3867,8 +3861,12 @@
             "a": "Only when your output is published on a customer's public marketing surface. Form tools, testimonial tools, video tools, link-in-bio tools all work. Internal SaaS, dashboards, admin tools do not — the attribution is invisible to anyone but the buyer."
           },
           {
-            "q": "Why is the Premium tier so much more expensive than Starter?",
-            "a": "Premium serves a different buyer (agency or team) with team-collaboration features. Pricing it well above Starter is intentional anchoring — it makes Starter read as the indie choice and Premium as the professional choice. The price gap reinforces the segment difference."
+            "q": "What is Senja's official pricing?",
+            "a": "As of 2026-07-17, Senja's official pricing page lists three tiers: Free at $0 with up to 15 testimonials, Starter at $29 per month, and Pro at $59 per month, with yearly billing advertised at 17% off. Always confirm on senja.io/pricing — this teardown analyzes the structure, and prices can change."
+          },
+          {
+            "q": "Why is the Pro tier so much more expensive than Starter?",
+            "a": "Pro serves a different buyer (agency or team) with team-collaboration features and 5 included seats. Pricing it well above Starter is intentional anchoring — it makes Starter read as the indie choice and Pro as the professional choice. The price gap reinforces the segment difference."
           },
           {
             "q": "What is the Brunson lens on Senja's pricing?",
@@ -3883,7 +3881,7 @@
         ],
         "homepageUrl": "https://senja.io/",
         "pricingPageUrl": "https://senja.io/pricing",
-        "lastVerified": "2026-05-17"
+        "lastVerified": "2026-07-17"
       },
       {
         "slug": "polar",
@@ -13327,6 +13325,28 @@
           "costsLessThan98ToFindOut": false
         },
         "homepageUrl": "https://www.demandcurve.com/",
+        "contextualLinks": [
+          {
+            "href": "/launch-checklist",
+            "label": "Run the pre-launch checklist Demand Curve assumes you already finished"
+          },
+          {
+            "href": "/tools/revenue-projector",
+            "label": "Model the MRR path the growth experiments should produce"
+          },
+          {
+            "href": "/tools/ltv-calculator",
+            "label": "Know the customer LTV before spending against it"
+          },
+          {
+            "href": "/tools/churn-cost-calculator",
+            "label": "Price what churn does to that growth curve"
+          },
+          {
+            "href": "/alternatives-to/stacking-the-bricks",
+            "label": "Compare the curriculum-first alternative: Stacking the Bricks"
+          }
+        ],
         "tags": [
           "curriculum",
           "marketing",
@@ -13870,6 +13890,578 @@
           "remote-work"
         ],
         "lastVerified": "2026-05-18"
+      },
+      {
+        "slug": "webflow",
+        "displayName": "Webflow",
+        "creator": "Webflow, Inc.",
+        "category": "No-code website builder",
+        "oneLine": "Webflow builds the marketing site. Unlock SaaS finds the customers who visit it. Different tools, different jobs.",
+        "pricingNote": "Webflow has a free Starter tier and paid Site plans. Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A visual website builder that outputs clean HTML and CSS",
+          "A design tool for marketing sites and landing pages without code",
+          "A CMS for publishing content on a polished site"
+        ],
+        "whatItIsNot": [
+          "A way to get someone to pay for what the site sells",
+          "A diagnosis of why a live product page converts at zero",
+          "A sales-and-outreach playbook with a Stripe-verified refund"
+        ],
+        "whoForIt": "Founders who need a polished marketing site or landing page and want to design it themselves without writing code.",
+        "whoNotForIt": "Founders whose site is already live but has a flat Stripe line and needs customers, not a prettier page.",
+        "honestVerdict": "Webflow is excellent at making a site look professional. The problem it does not touch is the one most post-launch founders actually have: the page exists, looks fine, and still nobody buys. Unlock SaaS treats that disease directly. Plenty of members run their landing page on Webflow and their customer-acquisition work in Unlock SaaS, which is exactly the intended division of labour.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Webflow alternative?",
+            "a": "No. Webflow builds and designs the website. Unlock SaaS finds the customers who visit it. They solve different problems and are commonly used together."
+          },
+          {
+            "q": "Can I use Unlock SaaS with a site built on Webflow?",
+            "a": "Yes. The diagnostic takes the URL of your live Webflow site and labels what is broken about the offer, not the design. Keep Webflow for the site; use Unlock SaaS for the customer-acquisition playbook."
+          },
+          {
+            "q": "Does Unlock SaaS help me design a better landing page?",
+            "a": "Not as a design tool. It helps with the offer and messaging on that page, which is usually why a well-designed page still converts at zero. The design was never the missing piece."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://webflow.com/",
+        "tags": [
+          "no-code",
+          "website-builder",
+          "for-pre-launch",
+          "design"
+        ],
+        "lastVerified": "2026-08-13"
+      },
+      {
+        "slug": "bubble",
+        "displayName": "Bubble",
+        "creator": "Bubble Group, Inc.",
+        "category": "No-code web app builder",
+        "oneLine": "Bubble builds the product. Unlock SaaS finds the customer for the product Bubble built. Sequential, not interchangeable.",
+        "pricingNote": "Bubble has a free tier and paid subscription plans. Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A visual builder for full web applications without code",
+          "A way for non-engineers to ship a real product with a database and logic",
+          "A common way the Unlock SaaS audience shipped their first version"
+        ],
+        "whatItIsNot": [
+          "A way to get someone to pay for what you built",
+          "A diagnostic of why your app is converting at zero",
+          "A guarantee tied to your Stripe ledger"
+        ],
+        "whoForIt": "Non-engineers who want to build a functional web app with data and workflows without writing code.",
+        "whoNotForIt": "Founders who already built their app on Bubble and still have no paying customers.",
+        "honestVerdict": "Bubble solved the build-the-app problem for non-engineers. The next problem, finding a customer, is a different problem, and Bubble never claimed to solve it. Unlock SaaS is built for the Bubble-shaped founder: shipped a real product, now staring at a flat Stripe line and needing the marketing-and-sales playbook that the builder does not provide.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Bubble alternative?",
+            "a": "No. Bubble builds your product. Unlock SaaS finds the first paying customer for the product you already built. They are sequential, not substitutes."
+          },
+          {
+            "q": "Can I use Unlock SaaS with a product I built on Bubble?",
+            "a": "Yes, this is the canonical audience. Paste the URL of your shipped Bubble app into the diagnostic and it labels what is broken about the offer, not the code."
+          },
+          {
+            "q": "Do I have to move off Bubble to use Unlock SaaS?",
+            "a": "No. Keep Bubble for product changes. Unlock SaaS wraps around your live product and runs the marketing-and-sales playbook that Bubble does not."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://bubble.io/",
+        "tags": [
+          "no-code",
+          "app-builder",
+          "for-pre-launch",
+          "ai-tool"
+        ],
+        "lastVerified": "2026-08-13"
+      },
+      {
+        "slug": "zapier",
+        "displayName": "Zapier",
+        "creator": "Zapier, Inc.",
+        "category": "Automation and integrations platform",
+        "oneLine": "Zapier connects your tools. Unlock SaaS connects your product to a customer. Different kinds of plumbing.",
+        "pricingNote": "Zapier has a free tier and paid plans based on task volume. Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A no-code automation platform that moves data between apps",
+          "A way to wire up the operational plumbing of a SaaS",
+          "A time-saver for repetitive multi-tool workflows"
+        ],
+        "whatItIsNot": [
+          "A customer-acquisition playbook",
+          "A diagnosis of why your offer is not selling",
+          "A guarantee that shipping will produce a paying customer"
+        ],
+        "whoForIt": "Founders who need to connect their stack, move data between tools, or automate repetitive operational steps.",
+        "whoNotForIt": "Founders whose stack is already connected but who still have no paying customers.",
+        "honestVerdict": "Zapier is genuinely useful for operating a business once you have one. It does not answer the question of why nobody is paying yet. The two tools rarely compete: you use Zapier to run the machinery and Unlock SaaS to fill the pipeline that feeds it.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Zapier alternative?",
+            "a": "No. Zapier automates work between your apps. Unlock SaaS automates the work of getting a customer. One is operational plumbing, the other is a go-to-market playbook."
+          },
+          {
+            "q": "Can I use Zapier and Unlock SaaS together?",
+            "a": "Yes, and this is common. Zapier runs your internal workflows; Unlock SaaS runs the customer-acquisition motion that feeds the business those workflows support."
+          },
+          {
+            "q": "Does Unlock SaaS require Zapier?",
+            "a": "No. Unlock SaaS verifies results through Stripe, not through automations you build in Zapier. The two are independent."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://zapier.com/",
+        "tags": [
+          "automation",
+          "integrations",
+          "for-post-launch",
+          "operations"
+        ],
+        "lastVerified": "2026-08-13"
+      },
+      {
+        "slug": "skool",
+        "displayName": "Skool",
+        "creator": "Sam Ovens",
+        "category": "Community and course platform",
+        "oneLine": "Skool hosts a community. Unlock SaaS runs the playbook that gets you customers to put in one. Different layers.",
+        "pricingNote": "Skool is a flat-rate platform at approximately $99/month per group (verified 2026-08-13). Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A flat-fee platform for running a paid community and courses",
+          "A place to host members, lessons, and discussion in one product",
+          "A growing home for creator-led cohorts and masterminds"
+        ],
+        "whatItIsNot": [
+          "A SaaS launch curriculum",
+          "A diagnostic of why your product page converts at zero",
+          "A mechanism that verifies your Stripe revenue and refunds you if nothing sells"
+        ],
+        "whoForIt": "Creators and educators who want a simple, all-in-one place to host a paid community or course.",
+        "whoNotForIt": "Non-engineer SaaS founders who already shipped a product and need customers for it, not a place to host a community.",
+        "honestVerdict": "Skool is excellent at its job: hosting a community. Its job is not to get you your first SaaS customer, which is why the two products sit on different layers. Many Unlock SaaS members run a Skool community later, once they have an audience; the Playbook is for the earlier step, when there is no audience yet.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Skool alternative?",
+            "a": "No. Skool hosts a community and courses. Unlock SaaS runs the go-to-market playbook that gets you the customers who would later join a community. Different layers of the same business."
+          },
+          {
+            "q": "Can I use Skool and Unlock SaaS together?",
+            "a": "Yes. A common path is to use Unlock SaaS to get the first paying customers, then start a Skool community once you have an audience worth hosting."
+          },
+          {
+            "q": "Does Unlock SaaS include a community?",
+            "a": "Unlock SaaS is a playbook and diagnostic, not a community platform. If you want a hosted community, Skool is a reasonable choice; it just will not find your first customer for you."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": false
+        },
+        "homepageUrl": "https://www.skool.com/",
+        "tags": [
+          "community",
+          "course-platform",
+          "creator-economy",
+          "for-post-launch"
+        ],
+        "lastVerified": "2026-08-13"
+      },
+      {
+        "slug": "gumroad",
+        "displayName": "Gumroad",
+        "creator": "Gumroad, Inc.",
+        "category": "Creator commerce and digital-product checkout",
+        "oneLine": "Gumroad sells digital products. Unlock SaaS gets you a SaaS customer. Different products, different checkout.",
+        "pricingNote": "Gumroad is free to use and charges a flat fee per sale (10% as of 2026-08-13). Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A fast checkout for digital products, courses, and memberships",
+          "A low-friction way for creators to sell without building a store",
+          "A platform optimized for one-off digital-product sales"
+        ],
+        "whatItIsNot": [
+          "A SaaS launch curriculum",
+          "A diagnosis of why your subscription product is not selling",
+          "A refund tied to your Stripe ledger as a performance guarantee"
+        ],
+        "whoForIt": "Creators selling ebooks, courses, templates, or other digital products directly to an audience.",
+        "whoNotForIt": "Founders selling a recurring SaaS subscription who need their first paying customer and a repeatable acquisition playbook.",
+        "honestVerdict": "Gumroad is the right tool for selling a digital product to an audience that already exists. Unlock SaaS is for the earlier, harder problem: building the offer and the acquisition motion so a recurring SaaS product has its first customer. They are complementary: sell a template on Gumroad, sell the SaaS with the Playbook.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Gumroad alternative?",
+            "a": "No. Gumroad sells digital products to an existing audience. Unlock SaaS gets a recurring SaaS product its first paying customer. Different checkout, different job."
+          },
+          {
+            "q": "Can I sell my SaaS on Gumroad instead of using Unlock SaaS?",
+            "a": "You can list a digital product on Gumroad, but a recurring SaaS subscription is not what Gumroad is built for, and it will not diagnose or fix why the offer is not selling. Unlock SaaS works with your existing Stripe account."
+          },
+          {
+            "q": "Can I use Gumroad and Unlock SaaS together?",
+            "a": "Yes. Sell standalone templates or guides on Gumroad, and use Unlock SaaS to run the customer-acquisition playbook for your recurring SaaS product."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://gumroad.com/",
+        "tags": [
+          "creator-economy",
+          "payments",
+          "for-post-launch",
+          "digital-products"
+        ],
+        "lastVerified": "2026-08-13"
+      },
+      {
+        "slug": "strategic-flow",
+        "displayName": "Strategic Flow",
+        "creator": "Alex Iliescu (Strategic Flow Tech, Tenerife, Spain)",
+        "category": "Email architecture audit service",
+        "oneLine": "Strategic Flow rebuilds the email itself. Unlock SaaS finds the customers who receive it. Different problems, complementary tools.",
+        "pricingNote": "Strategic Flow has a $49 one-time Diagnostic Audit, a $499 one-time Full Architecture Rebuild, and monthly plans; no subscription required to start (verified 2026-08-15). Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A diagnostic service that scores a single SaaS email 1-10 against a 7-point Decision Friction Model",
+          "A same-day rebuild of that email: diagnosis, rebuilt version, and 3 A/B subject line variants",
+          "A 59-teardown public archive of named B2B SaaS emails (Semrush, HeyGen, Optimizely, Revolut, Wrike, Zoho) with scores and fixes"
+        ],
+        "whatItIsNot": [
+          "A deliverability tool: it does not fix bounce rates, spam placement, or sender reputation",
+          "A lifecycle or automation audit: it diagnoses the individual message, not the flows around it",
+          "A customer-acquisition playbook tied to your Stripe ledger"
+        ],
+        "whoForIt": "B2B SaaS founders and marketing managers whose open rates are acceptable (above 20%) but click rates are not (below 2%), and newsletter operators with 1,000+ subscribers.",
+        "whoNotForIt": "Founders who have not yet sent the emails or built the audience: the audit is only worth it once messages are going out and getting opened but not clicked.",
+        "honestVerdict": "Strategic Flow is a sharp, narrowly-scoped diagnostic: it names the structural reason a specific email fails to convert after it is opened. The problem it does not touch is the one before it: who the email goes to, how many send, and whether the offer behind it can convert at all. That is Unlock SaaS territory. The natural sequence is the reverse of what most founders expect: build the demand and offer layer with Unlock SaaS first, then sharpen each individual send with a Strategic Flow teardown.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Strategic Flow alternative?",
+            "a": "No. Strategic Flow audits and rebuilds individual emails. Unlock SaaS is the customer-acquisition playbook that determines who you email, how often, and with what offer. They solve different problems and are commonly used together."
+          },
+          {
+            "q": "Can I use Strategic Flow on emails written from an Unlock SaaS playbook?",
+            "a": "Yes. The Unlock SaaS playbook determines audience, cadence, and offer. Strategic Flow then diagnoses the structure of each individual send: subject construction, lead framing, proof placement, CTA language. Same email, two different layers."
+          },
+          {
+            "q": "Does Strategic Flow fix deliverability or spam placement?",
+            "a": "No, and they are explicit about it. It is a behavioral architecture diagnostic for emails that already reach the inbox. If open rates are fine but clicks are not, that is the layer it works on."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": true,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://strategicflow.tech/",
+        "tags": [
+          "email",
+          "conversion-audit",
+          "for-post-launch",
+          "marketing-education"
+        ],
+        "lastVerified": "2026-08-15"
+      },
+      {
+        "slug": "wix",
+        "displayName": "Wix",
+        "creator": "Wix.com Ltd.",
+        "category": "Website builder and hosting",
+        "oneLine": "Wix builds the site. Unlock SaaS finds the customers who visit it. Different jobs, different tools.",
+        "pricingNote": "Wix has a free plan and paid site plans that start around $17/month (verified 2026-08-14). Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A drag-and-drop website builder with hosting and a large template library",
+          "A way for a non-technical founder to publish a polished site fast",
+          "A platform that bundles domains, hosting, and design in one place"
+        ],
+        "whatItIsNot": [
+          "A diagnosis of why a live site still converts at zero",
+          "A customer-acquisition playbook tied to your Stripe ledger",
+          "A sales-and-outreach motion that runs after the site is live"
+        ],
+        "whoForIt": "Founders who need a professional website or landing page and want to build it themselves without writing code.",
+        "whoNotForIt": "Founders whose site is already live and polished but still has no paying customers.",
+        "honestVerdict": "Wix is very good at the problem it solves: turning a non-technical founder into someone with a clean, live website in an afternoon. The problem it does not touch is the one most post-launch founders actually have, which is that the site exists, looks fine, and still nobody buys. Unlock SaaS treats that disease directly. The two are commonly used in sequence: build the page on Wix, then run the customer-acquisition playbook on the offer that page presents.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Wix alternative?",
+            "a": "No. Wix builds and hosts the website. Unlock SaaS finds the customers who visit it. They solve different problems and are commonly used together."
+          },
+          {
+            "q": "Can I use Unlock SaaS with a site built on Wix?",
+            "a": "Yes. The diagnostic takes the URL of your live Wix site and labels what is broken about the offer, not the design. Keep Wix for the site; use Unlock SaaS for the acquisition playbook."
+          },
+          {
+            "q": "Does Unlock SaaS help me design a better Wix site?",
+            "a": "Not as a design tool. It helps with the offer and messaging on that page, which is usually why a well-designed page still converts at zero. The design was never the missing piece."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://www.wix.com/",
+        "tags": [
+          "website-builder",
+          "no-code",
+          "for-pre-launch",
+          "design"
+        ],
+        "lastVerified": "2026-08-14"
+      },
+      {
+        "slug": "shopify",
+        "displayName": "Shopify",
+        "creator": "Shopify Inc.",
+        "category": "E-commerce platform",
+        "oneLine": "Shopify builds the store. Unlock SaaS finds the customers for what the store sells. Different layers.",
+        "pricingNote": "Shopify starts around $39/month on its Basic plan plus transaction fees, with a free trial (verified 2026-08-14). Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A hosted platform for building and running an online store",
+          "A payments, inventory, and checkout system in one product",
+          "A fast way for a founder to sell physical or digital products online"
+        ],
+        "whatItIsNot": [
+          "A way to get someone to pay for what the store sells",
+          "A diagnosis of why a product page has no buyers",
+          "A refund tied to your Stripe ledger as a performance guarantee"
+        ],
+        "whoForIt": "Founders selling products who want a reliable, hosted store with payments and inventory handled for them.",
+        "whoNotForIt": "Founders who already have a store and a product but still have no customers.",
+        "honestVerdict": "Shopify is the default answer for selling products online, and it earns that position. What it does not do is make anyone buy. A store that is live on Shopify and converting at zero has a demand or offer problem, not a platform problem. Unlock SaaS is aimed at the SaaS-shaped version of that problem, but the underlying logic is the same: shipping the store is not the same as getting the first paying customer.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Shopify alternative?",
+            "a": "No. Shopify runs the store and checkout. Unlock SaaS runs the customer-acquisition playbook. One is commerce infrastructure, the other is a go-to-market motion."
+          },
+          {
+            "q": "Can I use Shopify and Unlock SaaS together?",
+            "a": "They sit on different layers. Shopify powers the storefront; Unlock SaaS diagnoses and fixes the offer and acquisition motion that feeds the store customers. There is no overlap to conflict."
+          },
+          {
+            "q": "Does Unlock SaaS sell products for me?",
+            "a": "No. It is not a marketplace or a storefront. It is a playbook and diagnostic that verifies results through your Stripe account, not through product sales."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://www.shopify.com/",
+        "tags": [
+          "ecommerce",
+          "payments",
+          "for-post-launch",
+          "storefront"
+        ],
+        "lastVerified": "2026-08-14"
+      },
+      {
+        "slug": "mailchimp",
+        "displayName": "Mailchimp",
+        "creator": "Intuit Inc.",
+        "category": "Email marketing and automation",
+        "oneLine": "Mailchimp sends email to a list. Unlock SaaS helps you build the offer that gets a list worth emailing.",
+        "pricingNote": "Mailchimp has a free tier and paid plans that scale with contact count. Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "An email marketing platform for campaigns, automations, and lists",
+          "A way to design and send newsletters and drip sequences",
+          "A tool for managing subscribers and tracking email engagement"
+        ],
+        "whatItIsNot": [
+          "A way to get the first customer who reads the email",
+          "A diagnosis of why your offer is not converting",
+          "A mechanism that verifies your Stripe revenue and refunds you if nothing sells"
+        ],
+        "whoForIt": "Founders who already have an audience or list and need to communicate with it regularly.",
+        "whoNotForIt": "Founders who have no list and no customers yet, and need the offer and acquisition motion first.",
+        "honestVerdict": "Mailchimp is excellent at the problem it solves: sending reliable, well-designed email to a list that already exists. The problem it does not solve is acquiring the customer who should be on that list in the first place. Unlock SaaS targets the earlier step. A founder who has shipped a product and has nobody to email does not need a better email tool; they need a playbook for the first paying customer.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Mailchimp alternative?",
+            "a": "No. Mailchimp is email infrastructure for a list. Unlock SaaS is a customer-acquisition playbook. Different problems, and they are often used in sequence."
+          },
+          {
+            "q": "Can I use Mailchimp and Unlock SaaS together?",
+            "a": "Yes. Unlock SaaS gets the first paying customer and the offer right, and Mailchimp later nurtures the audience that grows from that. There is no functional overlap."
+          },
+          {
+            "q": "Does Unlock SaaS send email campaigns for me?",
+            "a": "No. Unlock SaaS is not an email sender. It verifies results through Stripe and runs the acquisition playbook, not the newsletter."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://mailchimp.com/",
+        "tags": [
+          "email",
+          "marketing-automation",
+          "for-post-launch",
+          "audience"
+        ],
+        "lastVerified": "2026-08-14"
+      },
+      {
+        "slug": "beehiiv",
+        "displayName": "beehiiv",
+        "creator": "beehiiv Inc.",
+        "category": "Newsletter platform",
+        "oneLine": "beehiiv grows a newsletter. Unlock SaaS gets a SaaS product its first customer. Different businesses.",
+        "pricingNote": "beehiiv has a free tier and paid plans starting around $39/month for the Scale plan (verified 2026-08-14). Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "A platform for writing, growing, and monetising a newsletter",
+          "A growth engine for audience-led media businesses",
+          "A way to run a paid or free email publication"
+        ],
+        "whatItIsNot": [
+          "A SaaS launch curriculum",
+          "A diagnosis of why a product is not selling",
+          "A refund tied to your Stripe ledger"
+        ],
+        "whoForIt": "Writers and creators building a newsletter or media audience, especially those monetising through subscriptions.",
+        "whoNotForIt": "SaaS founders who shipped a product and need their first paying customer, not a publication.",
+        "honestVerdict": "beehiiv is the right tool for building an audience-first media business, and it is very good at that. It is not a tool for getting a SaaS product its first customer, and it never claims to be. The two can coexist for the same founder: build the newsletter on beehiiv once there is an audience, and use Unlock SaaS for the earlier, harder step of getting a product that people will pay for.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a beehiiv alternative?",
+            "a": "No. beehiiv is a newsletter platform for audience businesses. Unlock SaaS is a customer-acquisition playbook for SaaS. Different businesses, different tools."
+          },
+          {
+            "q": "Can I run a beehiiv newsletter and use Unlock SaaS?",
+            "a": "Yes, this is a common sequence. Use Unlock SaaS to get the first paying SaaS customer and the offer right, then build the newsletter on beehiiv once there is an audience worth writing to."
+          },
+          {
+            "q": "Does Unlock SaaS include newsletter tools?",
+            "a": "No. Unlock SaaS is a playbook and diagnostic, not a publishing platform. For a newsletter, beehiiv is a reasonable choice; it just will not find your first SaaS customer."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": true
+        },
+        "homepageUrl": "https://www.beehiiv.com/",
+        "tags": [
+          "newsletter",
+          "creator-economy",
+          "audience",
+          "for-post-launch"
+        ],
+        "lastVerified": "2026-08-14"
+      },
+      {
+        "slug": "kajabi",
+        "displayName": "Kajabi",
+        "creator": "Kajabi LLC",
+        "category": "Course and creator monetisation platform",
+        "oneLine": "Kajabi sells courses and memberships. Unlock SaaS gets a SaaS product its first customer. Different offers.",
+        "pricingNote": "Kajabi is a paid platform starting around $149/month with no free tier (verified 2026-08-14). Unlock SaaS is $1 Starter + $49/month Playbook.",
+        "whatItIs": [
+          "An all-in-one platform for selling courses, coaching, and memberships",
+          "A way for creators to run a knowledge business with marketing funnels built in",
+          "A product for turning expertise into a paid offering"
+        ],
+        "whatItIsNot": [
+          "A SaaS launch curriculum",
+          "A diagnosis of why your product page converts at zero",
+          "A mechanism that verifies Stripe revenue and refunds you if nothing sells"
+        ],
+        "whoForIt": "Creators and educators selling courses, coaching, or memberships and wanting the funnel tooling bundled in.",
+        "whoNotForIt": "SaaS founders who shipped a product and need customers for it, not a platform for selling expertise.",
+        "honestVerdict": "Kajabi is a serious, well-built platform for the creator economy, and its price reflects that it bundles a lot of funnel machinery. It is the wrong shape for a SaaS founder whose problem is a flat Stripe line: that founder does not need another course platform, they need an honest diagnosis of why the product is not selling and a playbook to fix it. Unlock SaaS is aimed squarely at that second person.",
+        "faqs": [
+          {
+            "q": "Is Unlock SaaS a Kajabi alternative?",
+            "a": "No. Kajabi sells courses, coaching, and memberships. Unlock SaaS gets a SaaS product its first paying customer. Different offers, different tools."
+          },
+          {
+            "q": "Can I use Kajabi and Unlock SaaS together?",
+            "a": "They serve different businesses. A creator selling knowledge uses Kajabi; a founder selling a SaaS subscription uses Unlock SaaS. There is little overlap."
+          },
+          {
+            "q": "Is Kajabi worth the price for a SaaS founder?",
+            "a": "Almost never. If you are selling a SaaS product, a course platform is overhead, not the missing piece. The missing piece is usually the offer and the acquisition motion, which is what Unlock SaaS targets."
+          }
+        ],
+        "capabilities": {
+          "tellsYouWhatToDo": false,
+          "pushesBackOnVagueAnswers": false,
+          "sendsOutreachInsideTool": false,
+          "verifiesPayingCustomerViaStripe": false,
+          "refundsInCode": false,
+          "stopsYouFromSkipping": false,
+          "costsLessThan98ToFindOut": false
+        },
+        "homepageUrl": "https://kajabi.com/",
+        "tags": [
+          "course-platform",
+          "creator-economy",
+          "memberships",
+          "for-post-launch"
+        ],
+        "lastVerified": "2026-08-14"
       }
     ],
     "categories": [
